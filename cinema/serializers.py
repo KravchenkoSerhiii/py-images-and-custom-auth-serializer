@@ -30,6 +30,12 @@ class CinemaHallSerializer(serializers.ModelSerializer):
         fields = ("id", "name", "rows", "seats_in_row", "capacity")
 
 
+class MovieImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ("id", "image")
+
+
 class MovieSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(read_only=True)
 
@@ -44,12 +50,6 @@ class MovieSerializer(serializers.ModelSerializer):
             "actors",
             "image"
         )
-
-
-class MovieImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Movie
-        fields = ("id", "image")
 
 
 class MovieListSerializer(MovieSerializer):
